@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class GrammarExercise {
@@ -15,6 +16,12 @@ public class GrammarExercise {
 
     public static List<String> findCommonWordsWithSpace(String firstWordList, String secondWordList) {
         //在这编写实现代码
+        if (firstWordList.contains(",,") || secondWordList.contains(",,")
+                || firstWordList.matches(".*[^a-zA-Z,]+.*")
+                || secondWordList.matches(".*[^a-zA-Z,]+.*")) {
+            throw new RuntimeException();
+        }
+
         String[] array1 = firstWordList.split(",");//["apple","juice","mother","people","beautiful","apple","dog"]
         String[] array2 = secondWordList.split(",");//["cat","baby","smile","good","apple","beautiful","Dog","nice"]
 
